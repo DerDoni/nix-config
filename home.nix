@@ -66,12 +66,14 @@
     ifuse
     usbutils
     exfat
+    dosfstools
+    hueadm
 
     # Code
     vim
     neovim
     coreutils
-
+    nodePackages.npm
     graphviz
     shellcheck
     zeal
@@ -109,6 +111,8 @@
     bitwarden-cli
     discord
     darktable
+    signal-desktop
+    signal-cli
     transmission-gtk
 
     # Window Manager Stuff
@@ -125,10 +129,12 @@
     sxiv
     exiftool
 
-    # Mail
+    # Mail and Calendar
     isync
     msmtp
     notmuch
+    khal
+    vdirsyncer
   ];
 
   programs.emacs = {

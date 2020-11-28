@@ -2,7 +2,7 @@
 
 let
   version = "a8477304cacbced948559ac450160c3af0e4e132";
-  type = "fakenews-gambling-social";
+  type = "fakenews-gambling-porn";
 in {
   networking.networkmanager.enable = true;
 

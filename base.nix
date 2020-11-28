@@ -75,6 +75,13 @@
   };
 
   nix = {
+    autoOptimiseStore = true;
+    gc = {
+      automatic = true;
+      dates = "weekly";
+      options = "--delete-older-than 30d";
+    };
+
     trustedUsers = [ "root" "vincenzo" ];
     nixPath = [
       "nixpkgs=/home/vincenzo/nix-config/nixpkgs"
