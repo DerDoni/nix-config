@@ -70,6 +70,7 @@
     hueadm
 
     # Code
+    exercism
     vim
     neovim
     coreutils
@@ -108,11 +109,8 @@
     spotify
     brave
     bitwarden
-    bitwarden-cli
     discord
-    darktable
     signal-desktop
-    signal-cli
     transmission-gtk
 
     # Window Manager Stuff
@@ -128,6 +126,7 @@
     mpd
     sxiv
     exiftool
+    youtube-dl
 
     # Mail and Calendar
     isync
