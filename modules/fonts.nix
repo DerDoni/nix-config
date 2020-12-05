@@ -1,5 +1,4 @@
-{ config, pkgs, ... }:
-{
+{ config, pkgs, ... }: {
   fonts = {
     fontDir.enable = true;
     enableGhostscriptFonts = true;
@@ -16,14 +15,16 @@
       fira-code-symbols
       mononoki
       font-awesome
+      ipafont
+      kochi-substitute
     ];
 
     fontconfig = {
       enable = true;
       defaultFonts = {
-       monospace = [ "Source Code Pro" ];
-       sansSerif = [ "Source Sans Pro" ];
-       serif = [ "Source Serif Pro" ];
+        monospace = [ "Source Code Pro" ];
+        sansSerif = [ "Source Sans Pro" ];
+        serif = [ "Source Serif Pro" ];
       };
     };
   };

@@ -39,6 +39,16 @@
       layout = "us";
       xkbOptions = "caps:super";
     };
+    cron = {
+      enable = true;
+      systemCronJobs = [
+        "@hourly vincenzo mbsync -a"
+        "@hourly vincenzo notmuch new"
+        "@weekly vincenzo youtube-dl PLlrATfBNZ98dudnM48yfGUldqGD0S4FFb"
+        "@weekly vincenzo youtube-dl PLs3KjaCtOwSZ2tbuV1hx8Xz-rFZTan2J1"
+        "@daily vincenzo youtube-dl https://www.youtube.com/c/WhatIveLearned/videos"
+      ];
+    };
     udisks2.enable = true;
     printing.enable = true;
     printing.drivers = [ pkgs.hplip ];
@@ -50,7 +60,7 @@
   };
 
   environment.variables = {
-    EDITOR = "emacs";
+    EDITOR = "nvim";
     RANGER_LOAD_DEFAULT_RC = "false";
   };
   environment.systemPackages = with pkgs;

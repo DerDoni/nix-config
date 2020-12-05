@@ -35,6 +35,7 @@
     rsync
     tree
     ripgrep
+    ripgrep-all
     starship
     wget
     direnv
@@ -43,6 +44,7 @@
     fzf
     gvfs
     gitAndTools.gitFull
+    bfg-repo-cleaner
     xdg_utils
     aspell
     aspellDicts.en
@@ -68,6 +70,7 @@
     exfat
     dosfstools
     hueadm
+    sqlite
 
     # Code
     exercism
@@ -90,6 +93,7 @@
     cabal-install
     hlint
     haskell-language-server
+    stack
     # C
     cmake
     gnumake
