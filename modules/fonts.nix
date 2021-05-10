@@ -13,6 +13,7 @@
       ia-writer-duospace
       fira-code
       fira-code-symbols
+      jetbrains-mono
       mononoki
       font-awesome
       ipafont

@@ -13,8 +13,10 @@
 
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
+  boot.kernelPackages = pkgs.linuxPackages_latest;
   nixpkgs.config.allowUnfree = true;
 
+  powerManagement.enable = true;
   time.timeZone = "Europe/Berlin";
 
   networking = {
@@ -28,17 +30,29 @@
     font = "Lat2-Terminus16";
     keyMap = "us";
   };
-
   services = {
     xserver = {
       enable = true;
+      #      desktopManager.plasma5.enable = true;
+      exportConfiguration = true;
       displayManager.lightdm.enable = true;
       displayManager.autoLogin.user = "vincenzo";
       displayManager.autoLogin.enable = true;
       videoDrivers = [ "nvidia" ];
-      layout = "us";
-      xkbOptions = "caps:super";
+      layout = "us, de";
+      xkbOptions = "caps:super, eurosign:e, grp:alt_shift_toggle";
     };
+    mpd = {
+      enable = true;
+      extraConfig = ''
+        audio_output {
+          type "pulse" # MPD must use Pulseaudio
+          name "Pulseaudio" # Whatever you want
+          server "127.0.0.1" # MPD must connect to the local sound server
+        }
+      '';
+    };
+
     cron = {
       enable = true;
       systemCronJobs = [
@@ -63,16 +77,15 @@
     EDITOR = "nvim";
     RANGER_LOAD_DEFAULT_RC = "false";
   };
-  environment.systemPackages = with pkgs;
-    [
-      (python38.withPackages
-        (ps: with ps; [ numpy toolz pillow pytest pandas requests isort ]))
-    ];
 
+  programs.dconf.enable = true;
+  programs.fish.enable = true;
+  programs.java.enable = true;
   nixpkgs.config.permittedInsecurePackages = [ "xpdf-4.02" ];
   users.users.vincenzo = {
     isNormalUser = true;
     initialPassword = "password";
+    shell = pkgs.fish;
     extraGroups = [ "wheel" ]; # Enable ‘sudo’ for the user.
   };
 

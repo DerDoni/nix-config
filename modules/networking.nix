@@ -1,22 +1,28 @@
-{ pkgs, ... }:
+{ config, lib, pkgs, ... }:
 
-let
-  version = "a8477304cacbced948559ac450160c3af0e4e132";
-  type = "fakenews-gambling-porn";
-in {
+{
   networking.networkmanager.enable = true;
-
   networking.networkmanager.packages = with pkgs; [
     networkmanager_fortisslvpn
     networkmanager_openvpn
   ];
-
+  # Generate an immutable /etc/resolv.conf from the nameserver settings
+  # above (otherwise DHCP overwrites it):
+  environment.etc."resolv.conf" = with lib;
+    with pkgs; {
+      source = writeText "resolv.conf" ''
+        ${concatStringsSep "\n"
+        (map (ns: "nameserver ${ns}") config.networking.nameservers)}
+        options edns0
+      '';
+    };
   environment.systemPackages = with pkgs; [ openfortivpn ];
-  networking.nameservers = [ "1.1.1.1" "1.0.0.1" ];
+  networking.nameservers = [ "1.1.1.1" ];
 
-  networking.extraHosts = builtins.readFile (pkgs.fetchurl {
-    url =
-      "https://github.com/StevenBlack/hosts/raw/${version}/alternates/${type}/hosts";
-    sha256 = "1224242vsfyybvqmkxvjyp5715qvralb18b78b7mmy1r67s8pc1f";
-  });
+  networking.extraHosts = let
+    hostsPath =
+      "https://raw.githubusercontent.com/StevenBlack/hosts/master/hosts";
+    hostsFile = builtins.fetchurl hostsPath;
+  in builtins.readFile "${hostsFile}";
+
 }

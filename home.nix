@@ -21,8 +21,6 @@
   home.homeDirectory = "/home/vincenzo";
 
   home.packages = with pkgs; [
-    niv
-
     # Archiving
     unrar
     unzip
@@ -30,11 +28,22 @@
     zip
 
     # System Utils
+    dconf
+    borgbackup
+    magic-wormhole
+    maim
     flameshot
+    gnuplot
+    libgnome_keyring
+    libsecret
+    xclip
+    ipfs
+    jump
     htop
     rsync
     tree
     ripgrep
+    nextcloud21
     ripgrep-all
     starship
     wget
@@ -42,6 +51,7 @@
     fd
     file
     fzf
+    p7zip
     gvfs
     gitAndTools.gitFull
     bfg-repo-cleaner
@@ -53,6 +63,8 @@
     alacritty
     rxvt_unicode
     xorg.xkill
+    xorg.libXft
+    xorg.libXdamage
     killall
     gparted
     binutils
@@ -71,20 +83,20 @@
     dosfstools
     hueadm
     sqlite
+    pavucontrol
 
     # Code
     exercism
     vim
-    neovim
     coreutils
     nodePackages.npm
     graphviz
     shellcheck
     zeal
-    python38Full
     # Python
+    python3
     black
-    pipenv
+    python-language-server
     # Nix
     nixfmt
     # Haskell
@@ -100,6 +112,14 @@
     gcc
     libtool
     libvterm
+    # Java
+    jetbrains.idea-ultimate
+    openjdk
+    maven
+    kotlin
+
+    # SWT Tut
+    slack
 
     # Research
     calibre
@@ -107,48 +127,64 @@
     zotero
     texlive.combined.scheme-full
     zathura
+    pandoc
 
     # Apps
     anki
-    spotify
     brave
-    bitwarden
     discord
     signal-desktop
+    tdesktop
+    weechat
     transmission-gtk
+    zoom-us
+    firefox
 
     # Window Manager Stuff
     xmobar
     nitrogen
     picom
-    trayer
-    volumeicon
 
     # Media
     mpv
     ncmpcpp
     mpd
+    mpc_cli
     sxiv
     exiftool
     youtube-dl
+    higan
+    snes9x-gtk
 
     # Mail and Calendar
     isync
     msmtp
     notmuch
+    mu
     khal
     vdirsyncer
   ];
 
   programs.emacs = {
     enable = true;
-    package = pkgs.emacsGcc;
+    #  package = pkgs.emacsGcc;
+    extraPackages = epkgs: [ epkgs.vterm ];
   };
-
-  services.emacs.enable = true;
-  programs.firefox.enable = true;
   programs.neovim.enable = true;
-
+  services.emacs.enable = true;
+  gtk = {
+    enable = true;
+    theme.name = "Adwaita-dark";
+    font.name = "Ubuntu 12";
+    iconTheme = {
+      name = "Adwaita";
+      package = pkgs.gnome3.adwaita-icon-theme;
+    };
+    gtk2.extraConfig = ''
+      gtk-cursor-theme-name = capitaine-cursors;
+    '';
+    gtk3.extraConfig = { gtk-cursor-theme-name = "capitaine-cursors"; };
+  };
   # This value determines the Home Manager release that your
   # configuration is compatible with. This helps avoid breakage
   # when a new Home Manager release introduces backwards
