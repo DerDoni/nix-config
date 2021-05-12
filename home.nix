@@ -87,18 +87,22 @@
 
     # Code
     exercism
+    plantuml
     vim
     coreutils
     nodePackages.npm
     graphviz
     shellcheck
     zeal
+
     # Python
     python3
     black
     python-language-server
+
     # Nix
     nixfmt
+
     # Haskell
     ghc
     cabal2nix
@@ -106,12 +110,14 @@
     hlint
     haskell-language-server
     stack
+
     # C
     cmake
     gnumake
     gcc
     libtool
     libvterm
+
     # Java
     jetbrains.idea-ultimate
     openjdk
@@ -168,9 +174,16 @@
   programs.emacs = {
     enable = true;
     #  package = pkgs.emacsGcc;
-    extraPackages = epkgs: [ epkgs.vterm ];
+    extraPackages = epkgs: [ epkgs.vterm epkgs.clang-format ];
   };
-  programs.neovim.enable = true;
+  programs.neovim = {
+    enable = true;
+    withPython3 = true;
+    plugins = with pkgs.vimPlugins; [ coc-nvim coc-python ];
+    extraPackages = with pkgs;
+      [ (python3.withPackages (ps: with ps; [ black flake8 ])) ];
+    extraPython3Packages = (ps: with ps; [ jedi ]);
+  };
   services.emacs.enable = true;
   gtk = {
     enable = true;
@@ -184,6 +197,13 @@
       gtk-cursor-theme-name = capitaine-cursors;
     '';
     gtk3.extraConfig = { gtk-cursor-theme-name = "capitaine-cursors"; };
+  };
+
+  qt = {
+    enable = true;
+    platformTheme = "gtk";
+    style.package = pkgs.adwaita-qt;
+    style.name = "adwaita-dark";
   };
   # This value determines the Home Manager release that your
   # configuration is compatible with. This helps avoid breakage

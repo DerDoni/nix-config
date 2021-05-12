@@ -97,6 +97,7 @@
     stateVersion = "20.09"; # Did you read the comment?
   };
 
+  programs.qt5ct.enable = true;
   nix = {
     autoOptimiseStore = true;
     gc = {
