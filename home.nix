@@ -34,8 +34,6 @@
     maim
     flameshot
     gnuplot
-    libgnome_keyring
-    libsecret
     xclip
     ipfs
     jump
@@ -43,7 +41,6 @@
     rsync
     tree
     ripgrep
-    nextcloud21
     ripgrep-all
     starship
     wget
@@ -152,6 +149,7 @@
     picom
 
     # Media
+    ffmpeg
     mpv
     ncmpcpp
     mpd
@@ -181,7 +179,10 @@
     withPython3 = true;
     plugins = with pkgs.vimPlugins; [ coc-nvim coc-python ];
     extraPackages = with pkgs;
-      [ (python3.withPackages (ps: with ps; [ black flake8 ])) ];
+      [
+        (python3.withPackages
+          (ps: with ps; [ black flake8 pytest pipenv isort ]))
+      ];
     extraPython3Packages = (ps: with ps; [ jedi ]);
   };
   services.emacs.enable = true;
