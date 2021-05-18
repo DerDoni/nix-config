@@ -107,6 +107,7 @@
     hlint
     haskell-language-server
     stack
+    haskellPackages.random
 
     # C
     cmake
@@ -142,6 +143,7 @@
     transmission-gtk
     zoom-us
     firefox
+    gitter
 
     # Window Manager Stuff
     xmobar
@@ -165,6 +167,7 @@
     msmtp
     notmuch
     mu
+    htmlTidy
     khal
     vdirsyncer
   ];
