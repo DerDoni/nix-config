@@ -20,7 +20,7 @@
   time.timeZone = "Europe/Berlin";
 
   networking = {
-    hostName = "nixos"; # Define your hostname.
+    hostName = "dracula"; # Define your hostname.
     useDHCP = false;
     interfaces.enp0s31f6.useDHCP = true;
   };
@@ -53,6 +53,12 @@
       '';
     };
 
+    syncthing = {
+      enable = true;
+      user = "vincenzo";
+      dataDir = "/home/vincenzo/Documents";
+      configDir = "/home/vincenzo/.config/syncthing";
+    };
     cron = {
       enable = true;
       systemCronJobs = [

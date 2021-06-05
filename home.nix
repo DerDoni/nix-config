@@ -39,6 +39,8 @@
     jump
     htop
     rsync
+    dosfstools
+    mtools
     tree
     ripgrep
     ripgrep-all
@@ -85,10 +87,12 @@
     # Code
     exercism
     plantuml
+    graphviz
+    batik
     vim
     coreutils
     nodePackages.npm
-    graphviz
+
     shellcheck
     zeal
 
@@ -108,6 +112,7 @@
     haskell-language-server
     stack
     haskellPackages.random
+    haskellPackages.brittany
 
     # C
     cmake
@@ -138,6 +143,7 @@
     brave
     discord
     signal-desktop
+    element-desktop
     tdesktop
     weechat
     transmission-gtk
@@ -149,6 +155,7 @@
     xmobar
     nitrogen
     picom
+    trayer
 
     # Media
     ffmpeg
