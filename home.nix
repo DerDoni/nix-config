@@ -72,7 +72,6 @@
     xdotool
     ueberzug
     lynx
-    silver-searcher
     xz
     libimobiledevice
     usbmuxd
@@ -106,13 +105,10 @@
 
     # Haskell
     ghc
-    cabal2nix
-    cabal-install
     hlint
     haskell-language-server
     stack
     haskellPackages.random
-    haskellPackages.brittany
 
     # C
     cmake
@@ -149,7 +145,6 @@
     transmission-gtk
     zoom-us
     firefox
-    gitter
 
     # Window Manager Stuff
     xmobar
@@ -172,7 +167,6 @@
     # Mail and Calendar
     isync
     msmtp
-    notmuch
     mu
     htmlTidy
     khal
