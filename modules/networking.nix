@@ -19,10 +19,4 @@
   environment.systemPackages = with pkgs; [ openfortivpn ];
   networking.nameservers = [ "1.1.1.1" ];
 
-  networking.extraHosts = let
-    hostsPath =
-      "https://raw.githubusercontent.com/StevenBlack/hosts/master/hosts";
-    hostsFile = builtins.fetchurl hostsPath;
-  in builtins.readFile "${hostsFile}";
-
 }
