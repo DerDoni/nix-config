@@ -100,11 +100,15 @@
       enable = true;
       channel = "https://nixos.org/channels/nixos-unstable";
     };
-    stateVersion = "20.09"; # Did you read the comment?
+    stateVersion = "21.05"; # Did you read the comment?
   };
 
   programs.qt5ct.enable = true;
   nix = {
+    package = pkgs.nixUnstable;
+    extraOptions = ''
+      experimental-features = nix-command flakes
+    '';
     autoOptimiseStore = true;
     gc = {
       automatic = true;
@@ -114,7 +118,6 @@
 
     trustedUsers = [ "root" "vincenzo" ];
     nixPath = [
-      "nixpkgs=/home/vincenzo/nix-config/nixpkgs"
       "nixos-config=/home/vincenzo/nix-config/base.nix"
       "home-manager=/home/vincenzo/nix-config/home-manager"
     ];
