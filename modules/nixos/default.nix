@@ -117,9 +117,6 @@
     };
 
     trustedUsers = [ "root" "vincenzo" ];
-    nixPath = [
-      "nixos-config=/home/vincenzo/nix-config/base.nix"
-      "home-manager=/home/vincenzo/nix-config/home-manager"
-    ];
+    nixPath = [ "nixos-config=/home/vincenzo/nix-config/base.nix" ];
   };
 }
