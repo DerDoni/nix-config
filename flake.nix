@@ -23,11 +23,10 @@
   outputs = inputs@{ self, nixpkgs, home-manager, nixos-hardware, devshell
     , flake-utils, treefmt, emacs-overlay, ... }: {
 
-      #      nixosConfigurations.dracula = nixpkgs.lib.nixosSystem {
-      #
-      #        system = "x86_64-linux";
-      #        modules = [ ./configuration.nix ./modules/hardware/dracula.nix ];
-      #      };
+      nixosConfigurations.dracula = nixpkgs.lib.nixosSystem {
+        system = "x86_64-linux";
+        modules = [ ./configuration.nix ];
+      };
 
       homeConfigurations = {
         dracula = home-manager.lib.homeManagerConfiguration rec {
