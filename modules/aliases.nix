@@ -25,5 +25,7 @@
   kitc = "systemctl start openvpn-uniVPN.service";
 
   config = "git --git-dir=$HOME/.cfg/ --work-tree=$HOME";
+  dracula =
+    "sudo nixos-rebuild switch --upgrade --flake /home/vincenzo/nix-config/.#dracula";
 
 }

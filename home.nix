@@ -1,6 +1,14 @@
 { config, pkgs, ... }:
 
 {
+
+  nixpkgs.overlays = [
+    (import (builtins.fetchTarball {
+      url =
+        "https://github.com/nix-community/emacs-overlay/archive/master.tar.gz";
+    }))
+  ];
+
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
   nixpkgs.config.allowUnfree = true;
@@ -99,6 +107,8 @@
 
     # Haskell
     ghc
+    cabal2nix
+    cabal-install
     haskellPackages.hlint
     haskell-language-server
     stack
@@ -167,7 +177,7 @@
 
   programs.emacs = {
     enable = true;
-    #  package = pkgs.emacsGcc;
+    package = pkgs.emacsGcc;
     extraPackages = epkgs: [ epkgs.vterm epkgs.clang-format ];
   };
   programs.neovim = {
@@ -181,7 +191,9 @@
       ];
     extraPython3Packages = (ps: with ps; [ jedi ]);
   };
-  services.emacs.enable = true;
+  programs.direnv.enable = true;
+  programs.direnv.enableNixDirenvIntegration = true;
+
   gtk = {
     enable = true;
     theme.name = "Adwaita-dark";
@@ -202,6 +214,8 @@
     style.package = pkgs.adwaita-qt;
     style.name = "adwaita-dark";
   };
+
+  services.emacs.enable = true;
   # This value determines the Home Manager release that your
   # configuration is compatible with. This helps avoid breakage
   # when a new Home Manager release introduces backwards
