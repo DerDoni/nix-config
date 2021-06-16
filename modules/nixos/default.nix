@@ -2,7 +2,7 @@
 
 {
   imports = [ # Include the results of the hardware scan.
-    /etc/nixos/hardware-configuration.nix
+    ./modules/hardware/dracula.nix
     ./modules/fonts.nix
     ./modules/networking.nix
     ./modules/overlays.nix

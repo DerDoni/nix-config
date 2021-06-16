@@ -15,7 +15,7 @@
   boot.loader.efi.canTouchEfiVariables = true;
   boot.kernelPackages = pkgs.linuxPackages_latest;
   nixpkgs.config.allowUnfree = true;
-
+  home-manager.users.vincenzo = import ./home.nix;
   powerManagement.enable = true;
   time.timeZone = "Europe/Berlin";
 
@@ -69,6 +69,16 @@
         "@daily vincenzo youtube-dl https://www.youtube.com/c/WhatIveLearned/videos"
       ];
     };
+    borgbackup.jobs.home = {
+      paths = [ "/home" ];
+      exclude = [ "*/Cache" ".cache" ];
+      repo = "/backup/borg/";
+      encryption.mode = "none";
+      compression = "auto,lzma";
+      startAt = "daily";
+      environment = { BORG_UNKNOWN_UNENCRYPTED_REPO_ACCESS_IS_OK = "yes"; };
+    };
+
     udisks2.enable = true;
     printing.enable = true;
     printing.drivers = [ pkgs.hplip ];
@@ -84,6 +94,8 @@
     RANGER_LOAD_DEFAULT_RC = "false";
   };
 
+  environment.shellAliases = import ./modules/aliases.nix;
+
   programs.dconf.enable = true;
   programs.fish.enable = true;
   programs.java.enable = true;
@@ -92,8 +104,9 @@
     isNormalUser = true;
     initialPassword = "password";
     shell = pkgs.fish;
-    extraGroups = [ "wheel" ]; # Enable ‘sudo’ for the user.
+    extraGroups = [ "wheel" "docker" ]; # Enable ‘sudo’ for the user.
   };
+  virtualisation.docker.enable = true;
 
   system = {
     autoUpgrade = {

@@ -78,6 +78,7 @@
 
     # Code
     exercism
+    docker-compose
     plantuml
     graphviz
     batik
@@ -98,7 +99,7 @@
 
     # Haskell
     ghc
-    hlint
+    haskellPackages.hlint
     haskell-language-server
     stack
     haskellPackages.random
@@ -154,8 +155,6 @@
     sxiv
     exiftool
     youtube-dl
-    higan
-    snes9x-gtk
 
     # Mail and Calendar
     isync
