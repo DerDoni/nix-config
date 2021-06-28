@@ -1,14 +1,4 @@
-{ config, pkgs, ... }:
-
-{
-
-  nixpkgs.overlays = [
-    (import (builtins.fetchTarball {
-      url =
-        "https://github.com/nix-community/emacs-overlay/archive/master.tar.gz";
-    }))
-  ];
-
+{ config, pkgs, ... }: {
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
   nixpkgs.config.allowUnfree = true;
@@ -29,6 +19,7 @@
     zip
 
     # System Utils
+    xcape
     dconf
     borgbackup
     magic-wormhole
@@ -158,6 +149,9 @@
 
     # Media
     ffmpeg
+    imagemagick
+    jpegoptim
+    img2pdf
     mpv
     ncmpcpp
     mpd
@@ -177,7 +171,7 @@
 
   programs.emacs = {
     enable = true;
-    package = pkgs.emacsGcc;
+    #    package = pkgs.emacsPgtkGcc;
     extraPackages = epkgs: [ epkgs.vterm epkgs.clang-format ];
   };
   programs.neovim = {
@@ -216,6 +210,12 @@
   };
 
   services.emacs.enable = true;
+  services.xcape = {
+    enable = true;
+    mapExpression = { Caps_Lock = "Escape"; };
+    timeout = 250;
+  };
+
   # This value determines the Home Manager release that your
   # configuration is compatible with. This helps avoid breakage
   # when a new Home Manager release introduces backwards

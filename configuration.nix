@@ -9,6 +9,7 @@
     ./modules/xmonad.nix
     ./modules/email.nix
     ./modules/redshift.nix
+    #    ./modules/emacs.nix
   ];
 
   boot.loader.systemd-boot.enable = true;
@@ -128,8 +129,10 @@
       dates = "weekly";
       options = "--delete-older-than 30d";
     };
-
+    nixPath = [
+      "nixpkgs=/home/vincenzo/nix-config/nixpkgs"
+      "nixos-config=/home/vincenzo/nix-config/configuration.nix"
+    ];
     trustedUsers = [ "root" "vincenzo" ];
-    nixPath = [ "nixos-config=/home/vincenzo/nix-config/base.nix" ];
   };
 }
