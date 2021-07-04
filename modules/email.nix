@@ -1,4 +1,4 @@
-{pkgs, ...}:
+{ pkgs, ... }:
 
 {
   environment.systemPackages = with pkgs; [
@@ -6,8 +6,8 @@
     gnupg
     isync
     msmtp
-    notmuch
     pinentry
+    mu
   ];
 
   programs.gnupg.agent.enable = true;
@@ -16,14 +16,14 @@
     services.mbsync = {
       description = "Mailbox syncronization";
 
-  	  serviceConfig = {
-  	    Type = "oneshot";
-  	    ExecStart = "${pkgs.isync}/bin/mbsync -aq";
-  	  };
+      serviceConfig = {
+        Type = "oneshot";
+        ExecStart = "${pkgs.isync}/bin/mbsync -aq";
+      };
 
-  	  path = with pkgs; [gawk gnupg pass];
+      path = with pkgs; [ gawk gnupg pass ];
 
-  	  after = [ "network-online.target" "gpg-agent.service" ];
+      after = [ "network-online.target" "gpg-agent.service" ];
       wantedBy = [ "default.target" ];
     };
 

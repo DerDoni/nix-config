@@ -27,5 +27,5 @@
   config = "git --git-dir=$HOME/.cfg/ --work-tree=$HOME";
   dracula =
     "sudo nixos-rebuild switch --upgrade --flake /home/vincenzo/nix-config/.#dracula";
-
+  e = "emacsclient -c -a 'emacs'";
 }
