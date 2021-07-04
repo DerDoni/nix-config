@@ -170,33 +170,7 @@
     sxiv
     exiftool
     youtube-dl
-
-    # Mail and Calendar
-    isync
-    msmtp
-    mu
-    htmlTidy
-    vdirsyncer
   ];
-
-  programs.emacs = {
-    enable = true;
-    #    package = pkgs.emacsPgtkGcc;
-    extraPackages = epkgs: [ epkgs.vterm epkgs.clang-format ];
-  };
-  programs.neovim = {
-    enable = true;
-    withPython3 = true;
-    plugins = with pkgs.vimPlugins; [ coc-nvim coc-python ];
-    extraPackages = with pkgs;
-      [
-        (python3.withPackages
-          (ps: with ps; [ black flake8 pytest pipenv isort ]))
-      ];
-    extraPython3Packages = (ps: with ps; [ jedi ]);
-  };
-  programs.direnv.enable = true;
-  programs.direnv.nix-direnv.enable = true;
 
   gtk = {
     enable = true;
@@ -217,13 +191,6 @@
     platformTheme = "gtk";
     style.package = pkgs.adwaita-qt;
     style.name = "adwaita-dark";
-  };
-
-  services.emacs.enable = true;
-  services.xcape = {
-    enable = true;
-    mapExpression = { Caps_Lock = "Escape"; };
-    timeout = 250;
   };
 
   # This value determines the Home Manager release that your

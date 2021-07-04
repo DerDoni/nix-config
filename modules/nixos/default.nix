@@ -119,9 +119,6 @@
   programs.qt5ct.enable = true;
   nix = {
     package = pkgs.nixUnstable;
-    extraOptions = ''
-      experimental-features = nix-command flakes
-    '';
     autoOptimiseStore = true;
     gc = {
       automatic = true;
