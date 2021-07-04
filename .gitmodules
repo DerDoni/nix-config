@@ -1,3 +1,6 @@
 [submodule "home-manager"]
 	path = home-manager
 	url = https://github.com/nix-community/home-manager
+[submodule "nixpkgs"]
+	path = nixpkgs
+	url = https://github.com/NixOS/nixpkgs

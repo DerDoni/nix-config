@@ -38,7 +38,6 @@
     ripgrep-all
     starship
     wget
-    direnv
     fd
     file
     fzf
@@ -76,6 +75,8 @@
     pavucontrol
 
     # Code
+    editorconfig-core-c
+    jq
     exercism
     docker-compose
     plantuml
@@ -89,7 +90,11 @@
     zeal
 
     # Python
-    python3
+    python39
+    pipenv
+    python39Packages.pytest
+    python39Packages.isort
+    python39Packages.pyflakes
     black
     python-language-server
 
@@ -111,6 +116,12 @@
     gcc
     libtool
     libvterm
+
+    # Rust
+    rustfmt
+    rustc
+    cargo
+    rust-analyzer
 
     # Java
     jetbrains.idea-ultimate
@@ -165,7 +176,6 @@
     msmtp
     mu
     htmlTidy
-    khal
     vdirsyncer
   ];
 
@@ -186,7 +196,7 @@
     extraPython3Packages = (ps: with ps; [ jedi ]);
   };
   programs.direnv.enable = true;
-  programs.direnv.enableNixDirenvIntegration = true;
+  programs.direnv.nix-direnv.enable = true;
 
   gtk = {
     enable = true;

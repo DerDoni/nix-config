@@ -1,7 +1,7 @@
 { config, pkgs, ... }:
 
 {
-  imports = [ # Include the results of the hardware scan.
+  imports = [
     ./modules/hardware/dracula.nix
     ./modules/fonts.nix
     ./modules/networking.nix
@@ -15,12 +15,12 @@
   boot.loader.efi.canTouchEfiVariables = true;
   boot.kernelPackages = pkgs.linuxPackages_latest;
   nixpkgs.config.allowUnfree = true;
-
+  home-manager.users.vincenzo = import ./home.nix;
   powerManagement.enable = true;
   time.timeZone = "Europe/Berlin";
 
   networking = {
-    hostName = "dracula"; # Define your hostname.
+    hostName = "dracula";
     useDHCP = false;
     interfaces.enp0s31f6.useDHCP = true;
   };
@@ -33,7 +33,6 @@
   services = {
     xserver = {
       enable = true;
-      #      desktopManager.plasma5.enable = true;
       exportConfiguration = true;
       displayManager.lightdm.enable = true;
       displayManager.autoLogin.user = "vincenzo";
@@ -69,6 +68,16 @@
         "@daily vincenzo youtube-dl https://www.youtube.com/c/WhatIveLearned/videos"
       ];
     };
+    borgbackup.jobs.home = {
+      paths = [ "/home" ];
+      exclude = [ "*/Cache" ".cache" ];
+      repo = "/backup/borg/";
+      encryption.mode = "none";
+      compression = "auto,lzma";
+      startAt = "daily";
+      environment = { BORG_UNKNOWN_UNENCRYPTED_REPO_ACCESS_IS_OK = "yes"; };
+    };
+
     udisks2.enable = true;
     printing.enable = true;
     printing.drivers = [ pkgs.hplip ];
@@ -82,7 +91,10 @@
   environment.variables = {
     EDITOR = "nvim";
     RANGER_LOAD_DEFAULT_RC = "false";
+    CONFIGURATION_PATH = "$HOME/nix-config/configuration.nix";
   };
+
+  environment.shellAliases = import ./modules/aliases.nix;
 
   programs.dconf.enable = true;
   programs.fish.enable = true;
@@ -92,15 +104,16 @@
     isNormalUser = true;
     initialPassword = "password";
     shell = pkgs.fish;
-    extraGroups = [ "wheel" ]; # Enable ‘sudo’ for the user.
+    extraGroups = [ "wheel" "docker" ];
   };
+  virtualisation.docker.enable = true;
 
   system = {
     autoUpgrade = {
       enable = true;
       channel = "https://nixos.org/channels/nixos-unstable";
     };
-    stateVersion = "21.05"; # Did you read the comment?
+    stateVersion = "21.05";
   };
 
   programs.qt5ct.enable = true;
@@ -115,8 +128,10 @@
       dates = "weekly";
       options = "--delete-older-than 30d";
     };
-
+    nixPath = [
+      "nixpkgs=/home/vincenzo/nix-config/nixpkgs"
+      "nixos-config=/home/vincenzo/nix-config/configuration.nix"
+    ];
     trustedUsers = [ "root" "vincenzo" ];
-    nixPath = [ "nixos-config=/home/vincenzo/nix-config/base.nix" ];
   };
 }

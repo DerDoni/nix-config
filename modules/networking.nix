@@ -6,8 +6,6 @@
     networkmanager_fortisslvpn
     networkmanager_openvpn
   ];
-  # Generate an immutable /etc/resolv.conf from the nameserver settings
-  # above (otherwise DHCP overwrites it):
   environment.etc."resolv.conf" = with lib;
     with pkgs; {
       source = writeText "resolv.conf" ''

@@ -1,7 +1,7 @@
 { config, pkgs, ... }:
 
 {
-  imports = [ # Include the results of the hardware scan.
+  imports = [
     ./modules/hardware/dracula.nix
     ./modules/fonts.nix
     ./modules/networking.nix
@@ -9,7 +9,6 @@
     ./modules/xmonad.nix
     ./modules/email.nix
     ./modules/redshift.nix
-    #    ./modules/emacs.nix
   ];
 
   boot.loader.systemd-boot.enable = true;
@@ -21,7 +20,7 @@
   time.timeZone = "Europe/Berlin";
 
   networking = {
-    hostName = "dracula"; # Define your hostname.
+    hostName = "dracula";
     useDHCP = false;
     interfaces.enp0s31f6.useDHCP = true;
   };
@@ -34,7 +33,6 @@
   services = {
     xserver = {
       enable = true;
-      #      desktopManager.plasma5.enable = true;
       exportConfiguration = true;
       displayManager.lightdm.enable = true;
       displayManager.autoLogin.user = "vincenzo";
@@ -93,6 +91,7 @@
   environment.variables = {
     EDITOR = "nvim";
     RANGER_LOAD_DEFAULT_RC = "false";
+    CONFIGURATION_PATH = "$HOME/nix-config/configuration.nix";
   };
 
   environment.shellAliases = import ./modules/aliases.nix;
@@ -105,7 +104,7 @@
     isNormalUser = true;
     initialPassword = "password";
     shell = pkgs.fish;
-    extraGroups = [ "wheel" "docker" ]; # Enable ‘sudo’ for the user.
+    extraGroups = [ "wheel" "docker" ];
   };
   virtualisation.docker.enable = true;
 
@@ -114,7 +113,7 @@
       enable = true;
       channel = "https://nixos.org/channels/nixos-unstable";
     };
-    stateVersion = "21.05"; # Did you read the comment?
+    stateVersion = "21.05";
   };
 
   programs.qt5ct.enable = true;
