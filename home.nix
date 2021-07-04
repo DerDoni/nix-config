@@ -171,6 +171,24 @@
     exiftool
     youtube-dl
   ];
+  programs.direnv.enable = true;
+  programs.direnv.nix-direnv.enable = true;
+  programs.emacs = {
+    enable = true;
+    #    package = pkgs.emacsPgtkGcc;
+    extraPackages = epkgs: [ epkgs.vterm epkgs.clang-format ];
+  };
+  programs.neovim = {
+    enable = true;
+    withPython3 = true;
+    plugins = with pkgs.vimPlugins; [ coc-nvim coc-python ];
+    extraPackages = with pkgs;
+      [
+        (python3.withPackages
+          (ps: with ps; [ black flake8 pytest pipenv isort ]))
+      ];
+    extraPython3Packages = (ps: with ps; [ jedi ]);
+  };
 
   gtk = {
     enable = true;
