@@ -60,5 +60,6 @@
     emacs.enable = true;
 
     redshift.enable = true;
+    blueman.enable = true;
   };
 }

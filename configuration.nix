@@ -8,9 +8,9 @@
     ./modules/overlays.nix
     ./modules/xmonad.nix
     ./modules/email.nix
-    ./modules/redshift.nix
     ./modules/variables.nix
     ./modules/packages.nix
+    ./modules/services.nix
   ];
 
   boot.loader.systemd-boot.enable = true;
@@ -38,7 +38,6 @@
       RANGER_LOAD_DEFAULT_RC = "false";
       CONFIGURATION_PATH = "$HOME/nix-config/configuration.nix";
     };
-
     shellAliases = import ./modules/aliases.nix;
   };
 
@@ -69,7 +68,10 @@
       dates = "weekly";
       options = "--delete-older-than 30d";
     };
-    nixPath = [ "nixos-config=/home/vincenzo/nix-config/configuration.nix" ];
+    nixPath = [
+      "nixos-config=/home/vincenzo/nix-config/configuration.nix"
+      "nixpkgs=$HOME/nix-config/nixpkgs"
+    ];
     trustedUsers = [ "root" "vincenzo" ];
   };
 }

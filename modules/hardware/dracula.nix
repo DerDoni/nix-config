@@ -35,6 +35,7 @@
     [{ device = "/dev/disk/by-uuid/7ad126d7-2de9-4e63-a7cc-66da281bc3da"; }];
 
   sound.enable = true;
+  hardware.bluetooth.enable = true;
   hardware.pulseaudio = {
     enable = true;
     support32Bit = true;

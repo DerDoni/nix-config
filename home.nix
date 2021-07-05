@@ -12,125 +12,20 @@
   home.homeDirectory = "/home/vincenzo";
 
   home.packages = with pkgs; [
-    # Archiving
-    unrar
-    unzip
-    xz
-    zip
-
-    # System Utils
-    xcape
-    dconf
     borgbackup
     magic-wormhole
-    maim
-    flameshot
-    gnuplot
-    xclip
-    ipfs
-    jump
-    htop
-    rsync
-    dosfstools
-    mtools
-    tree
-    ripgrep
-    ripgrep-all
-    starship
-    wget
-    fd
-    file
-    fzf
-    p7zip
-    gvfs
-    gitAndTools.gitFull
-    bfg-repo-cleaner
-    xdg_utils
-    aspell
-    aspellDicts.en
-    sshfs
-    ledger
     alacritty
-    rxvt_unicode
-    xorg.xkill
-    xorg.libXft
-    xorg.libXdamage
-    killall
-    gparted
-    binutils
-    ranger
     pcmanfm
-    xdotool
-    ueberzug
-    lynx
-    xz
-    libimobiledevice
-    usbmuxd
-    ifuse
-    usbutils
-    exfat
-    dosfstools
+    jump
+    starship
+    ranger
     hueadm
-    sqlite
-    pavucontrol
-
     # Code
     editorconfig-core-c
     jq
     exercism
-    docker-compose
-    plantuml
-    graphviz
-    batik
-    vim
-    coreutils
-    nodePackages.npm
-
-    shellcheck
-    zeal
-
-    # Python
-    python39
-    pipenv
-    python39Packages.pytest
-    python39Packages.isort
-    python39Packages.pyflakes
-    black
-    python-language-server
-
     # Nix
     nixfmt
-
-    # Haskell
-    ghc
-    cabal2nix
-    cabal-install
-    haskellPackages.hlint
-    haskell-language-server
-    stack
-    haskellPackages.random
-
-    # C
-    cmake
-    gnumake
-    gcc
-    libtool
-    libvterm
-
-    # Rust
-    rustfmt
-    rustc
-    cargo
-    rust-analyzer
-
-    # Java
-    jetbrains.idea-ultimate
-    openjdk
-    maven
-    kotlin
-
-    # SWT Tut
-    slack
 
     # Research
     calibre
@@ -143,6 +38,7 @@
     # Apps
     anki
     brave
+    slack
     discord
     signal-desktop
     element-desktop
