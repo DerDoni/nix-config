@@ -10,7 +10,9 @@
     [ "xhci_pci" "ahci" "nvme" "usbhid" "usb_storage" "sd_mod" ];
   boot.initrd.kernelModules = [ ];
   boot.kernelModules = [ "kvm-intel" "wl" ];
-
+  boot.extraModprobeConfig = ''
+    options snd slots=snd-hda-nvidia
+  '';
   fileSystems."/" = {
     device = "/dev/disk/by-uuid/11987c8e-6adc-4664-a92d-a3bcd98a28ba";
     fsType = "ext4";
@@ -39,8 +41,9 @@
   hardware.pulseaudio = {
     enable = true;
     support32Bit = true;
-    extraConfig =
-      "load-module module-native-protocol-tcp auth-ip-acl=127.0.0.1"; # Needed by mpd to be able to use Pulseaudio
+    extraConfig = ''
+      load-module module-native-protocol-tcp auth-ip-acl=127.0.0.1
+       load-module module-switch-on-connect''; # Needed by mpd to be able to use Pulseaudio
   };
 
   powerManagement = {

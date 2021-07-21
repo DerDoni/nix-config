@@ -42,7 +42,6 @@
     gvfs
     gitAndTools.gitFull
     bfg-repo-cleaner
-    xdg_utils
     aspell
     aspellDicts.en
     sshfs
@@ -85,6 +84,7 @@
     haskell-language-server
     stack
     haskellPackages.random
+
     # Python
     python39
     pipenv
@@ -94,7 +94,10 @@
     python39Packages.pyflakes
     black
     python-language-server
+    jetbrains.pycharm-professional
+
     # Rust
+    jetbrains.clion
     rustfmt
     rustc
     cargo

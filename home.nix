@@ -20,6 +20,7 @@
     starship
     ranger
     hueadm
+    xdg_utils
     # Code
     editorconfig-core-c
     jq

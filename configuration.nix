@@ -45,7 +45,7 @@
     isNormalUser = true;
     initialPassword = "password";
     shell = pkgs.fish;
-    extraGroups = [ "wheel" "docker" ];
+    extraGroups = [ "wheel" "docker" "audio" ];
   };
   virtualisation.docker.enable = true;
 
