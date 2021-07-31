@@ -37,6 +37,9 @@
     wget
     fd
     file
+    wine-staging
+    mesa
+    glxinfo
     fzf
     p7zip
     gvfs

@@ -19,7 +19,7 @@
   nixpkgs.config.allowUnfree = true;
   home-manager.users.vincenzo = import ./home.nix;
   time.timeZone = "Europe/Berlin";
-
+  hardware.opengl.driSupport32Bit = true;
   networking = {
     hostName = "dracula";
     useDHCP = false;
