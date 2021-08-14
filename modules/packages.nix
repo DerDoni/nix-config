@@ -13,6 +13,9 @@
     gcc
     libtool
     libvterm
+    automake
+    autoconf
+    zeromq
     # Archiving
     unrar
     unzip
@@ -21,6 +24,7 @@
 
     # System Utils
     xcape
+    teamviewer
     dconf
     maim
     flameshot

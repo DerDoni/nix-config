@@ -15,15 +15,17 @@
 
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
-  boot.kernelPackages = pkgs.linuxPackages_5_12;
+  boot.kernelPackages = pkgs.linuxPackages_latest;
   nixpkgs.config.allowUnfree = true;
   home-manager.users.vincenzo = import ./home.nix;
   time.timeZone = "Europe/Berlin";
+
+  #  services.xserver.desktopManager.plasma5.enable = true;
   hardware.opengl.driSupport32Bit = true;
   networking = {
     hostName = "dracula";
     useDHCP = false;
-    interfaces.enp0s31f6.useDHCP = true;
+    interfaces.enp42s0.useDHCP = true;
   };
 
   i18n.defaultLocale = "en_US.UTF-8";

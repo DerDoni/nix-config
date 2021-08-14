@@ -38,9 +38,11 @@
 
     # Apps
     anki
+    remmina
     brave
     slack
     discord
+    teams
     signal-desktop
     element-desktop
     tdesktop
