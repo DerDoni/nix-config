@@ -12,10 +12,12 @@
     gnumake
     gcc
     libtool
+    pkg-config
     libvterm
     automake
     autoconf
     zeromq
+    openssl
     # Archiving
     unrar
     unzip

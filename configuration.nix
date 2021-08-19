@@ -39,6 +39,8 @@
       EDITOR = "nvim";
       RANGER_LOAD_DEFAULT_RC = "false";
       CONFIGURATION_PATH = "$HOME/nix-config/configuration.nix";
+      PKG_CONFIG_PATH =
+        "/nix/store/v08a5vibyhh3j40nc2zvdjhzp2rmh297-zeromq-4.3.4/lib/pkgconfig/";
     };
     shellAliases = import ./modules/aliases.nix;
   };
