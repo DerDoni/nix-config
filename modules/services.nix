@@ -54,7 +54,7 @@
     printing.drivers = [ pkgs.hplip ];
     openssh.enable = true;
     openvpn.servers = {
-      uniVPN = { config = " config /home/vincenzo/.config/VPN/kit.ovpn"; };
+      #      uniVPN = { config = " config /home/vincenzo/.config/VPN/kit.ovpn"; };
       nordVPN = { config = " config /home/vincenzo/.config/VPN/nord.ovpn"; };
     };
     emacs.enable = true;

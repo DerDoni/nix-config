@@ -40,6 +40,7 @@
     anki
     remmina
     brave
+    nyxt
     slack
     discord
     teams

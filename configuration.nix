@@ -20,7 +20,6 @@
   home-manager.users.vincenzo = import ./home.nix;
   time.timeZone = "Europe/Berlin";
 
-  #  services.xserver.desktopManager.plasma5.enable = true;
   hardware.opengl.driSupport32Bit = true;
   networking = {
     hostName = "dracula";
@@ -39,8 +38,7 @@
       EDITOR = "nvim";
       RANGER_LOAD_DEFAULT_RC = "false";
       CONFIGURATION_PATH = "$HOME/nix-config/configuration.nix";
-      PKG_CONFIG_PATH =
-        "/nix/store/v08a5vibyhh3j40nc2zvdjhzp2rmh297-zeromq-4.3.4/lib/pkgconfig/";
+      RUST_SRC_PATH = "${pkgs.rust.packages.stable.rustPlatform.rustLibSrc}";
     };
     shellAliases = import ./modules/aliases.nix;
   };
@@ -65,6 +63,8 @@
     package = pkgs.nixUnstable;
     extraOptions = ''
       experimental-features = nix-command flakes
+      keep-outputs = true
+      keep-derivations = true
     '';
     autoOptimiseStore = true;
     gc = {

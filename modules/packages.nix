@@ -90,7 +90,7 @@
     haskellPackages.hlint
     haskellPackages.ghcup
     haskellPackages.brittany
-    haskell-language-server
+    #haskell-language-server
     stack
     haskellPackages.random
 
@@ -104,18 +104,24 @@
     black
     python-language-server
     jetbrains.pycharm-professional
+    jupyter
 
     # Rust
     jetbrains.clion
     rustfmt
+    rustup
     rustc
     cargo
     rust-analyzer
+    lldb
+
     # Java
     jetbrains.idea-ultimate
     openjdk
     maven
     kotlin
+    dart
+    flutter
 
   ];
 }
