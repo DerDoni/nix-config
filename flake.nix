@@ -8,6 +8,7 @@
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     stable.url = "github:nixos/nixpkgs/nixos-20.09";
     treefmt.url = "github:numtide/treefmt";
+    rust-overlay.url = "github:oxalica/rust-overlay";
 
     home-manager = {
       url = "github:nix-community/home-manager/master";
@@ -21,12 +22,19 @@
   };
 
   outputs = inputs@{ self, nixpkgs, home-manager, nixos-hardware, devshell
-    , flake-utils, treefmt, emacs-overlay, ... }: {
+    , flake-utils, treefmt, rust-overlay, emacs-overlay, ... }: {
 
       nixosConfigurations.dracula = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
-        modules =
-          [ ./configuration.nix home-manager.nixosModules.home-manager ];
+        modules = [
+          ./configuration.nix
+          home-manager.nixosModules.home-manager
+          ({ pkgs, ... }: {
+            nixpkgs.overlays = [ rust-overlay.overlay emacs-overlay.overlay ];
+            environment.systemPackages =
+              [ pkgs.rust-bin.stable.latest.default ];
+          })
+        ];
       };
 
       homeConfigurations = {
@@ -37,7 +45,7 @@
           extraSpecialArgs = { inherit inputs; };
           configuration = {
             imports = [ ./home.nix ];
-            nixpkgs.overlays = [ emacs-overlay.overlay ];
+            nixpkgs.overlays = [ emacs-overlay.overlay rust-overlay.overlay ];
           };
         };
       };

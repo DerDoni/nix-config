@@ -90,6 +90,7 @@
     haskellPackages.hlint
     haskellPackages.ghcup
     haskellPackages.brittany
+    haskellPackages.random
     #haskell-language-server
     stack
     haskellPackages.random
