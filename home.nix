@@ -29,7 +29,7 @@
     nixfmt
 
     # Research
-    #calibre
+    calibre
     proselint
     zotero
     texlive.combined.scheme-full

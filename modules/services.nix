@@ -6,6 +6,7 @@
       enable = true;
       exportConfiguration = true;
       displayManager.lightdm.enable = true;
+      desktopManager.plasma5.enable = true;
       displayManager.autoLogin.user = "vincenzo";
       displayManager.autoLogin.enable = true;
       videoDrivers = [ "nvidia" ];

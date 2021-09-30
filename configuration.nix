@@ -39,6 +39,7 @@
       RANGER_LOAD_DEFAULT_RC = "false";
       CONFIGURATION_PATH = "$HOME/nix-config/configuration.nix";
       RUST_SRC_PATH = "${pkgs.rust.packages.stable.rustPlatform.rustLibSrc}";
+      OPV_DLL = "$HOME/Code/opvengineering/opv_dll/opv_dll/lib";
     };
     shellAliases = import ./modules/aliases.nix;
   };

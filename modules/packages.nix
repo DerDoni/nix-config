@@ -12,10 +12,12 @@
     gnumake
     gcc
     libtool
+    gnutls
     pkg-config
     libvterm
     automake
     autoconf
+    psensor
     zeromq
     openssl
     # Archiving
