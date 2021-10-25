@@ -10,7 +10,7 @@
     redshift
     cmake
     gnumake
-    gcc
+    exa
     libtool
     gnutls
     pkg-config
@@ -98,13 +98,10 @@
     haskellPackages.random
 
     # Python
-    python39
+    python39Full
     pipenv
-    python39Packages.pytest
-    python39Packages.pip
-    python39Packages.isort
-    python39Packages.pyflakes
     black
+    nodePackages.pyright
     python-language-server
     jetbrains.pycharm-professional
     jupyter
@@ -126,5 +123,13 @@
     dart
     flutter
 
+    # PHP
+    php
+
+    # C
+    gcc
+    ccls
+    gdb
+    valgrind
   ];
 }
